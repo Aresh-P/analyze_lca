@@ -46,7 +46,7 @@ def test_depth_diff(g, a, b):
     for d in range(g):
         b = b.get_parent()
         if b == a:
-            return g - (d + 1)
+            return g - (d + 1) # Fixed off-by-one because b is advanced first
     return None
         
 def get_ptrs(lca_to_root, a_to_lca, b_to_lca):
@@ -81,6 +81,7 @@ def main():
         ax = plt.gca()
         ax.set_aspect('equal')
         plt.plot(*zip(*PAIRS[("a", "b")]), '.')
+        plt.plot(lca_to_a, lca_to_b, 'o', color='orange')
         plt.show()
 
 if __name__ == "__main__":
